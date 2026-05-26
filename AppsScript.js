@@ -13,15 +13,15 @@ function doPost(e) {
     var experienced = e.parameter['Đã từng chạy Xanh SM'] || '';
     var timestamp = new Date(); // Thời gian đăng ký
 
-    // Thêm một dòng mới vào Sheet theo thứ tự cột:
-    // Cột A: Họ Và Tên
-    // Cột B: Khu Vực
-    // Cột C: Đã từng chạy Xanh SM
-    // Cột D: Bằng lái xe
-    // Cột E: Số điện thoại liên hệ
-    // Cột F: Thời gian đăng ký (Tùy chọn)
+    // Thêm một dòng mới vào Sheet theo thứ tự cột của bạn:
+    // Cột A: Thời gian
+    // Cột B: Họ Và Tên
+    // Cột C: Khu Vực
+    // Cột D: Đã từng chạy Xanh SM
+    // Cột E: Bằng lái xe
+    // Cột F: Số điện thoại liên hệ
     
-    sheet.appendRow([name, area, experienced, license, phone, timestamp]);
+    sheet.appendRow([timestamp, name, area, experienced, license, phone]);
     
     return ContentService.createTextOutput(JSON.stringify({
       'result': 'success',
