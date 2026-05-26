@@ -1,55 +1,42 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyihAZVhdzy6ksopO_Ew0foPzaeoPIFk6VJJMWfdVoDJYFyv8xWBTbGEOB4JPVBGe5CJw/exec'; 
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('driverForm');
     const submitBtn = document.getElementById('submitBtn');
     const btnText = submitBtn.querySelector('.btn-text');
     const loader = submitBtn.querySelector('.loader');
-    const formMessage = document.getElementById('formMessage');
     
     // Modal elements
     const successModal = document.getElementById('successModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
+    const hiddenIframe = document.getElementById('hidden_iframe');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    // Trạng thái theo dõi form
+    let isSubmitted = false;
 
-        // Thay đổi trạng thái nút submit
+    // Khi người dùng bấm nút submit gửi form
+    form.addEventListener('submit', () => {
+        // Đổi nút submit thành trạng thái loading
         submitBtn.disabled = true;
         btnText.classList.add('hidden');
         loader.classList.remove('hidden');
-        formMessage.classList.add('hidden');
+        isSubmitted = true;
+    });
 
-        // Lấy dữ liệu từ form
-        const formData = new FormData(form);
-        
-        // Chuẩn bị dữ liệu gửi đi (FormData mapping theo tên cột Google Sheet)
-        const data = new FormData();
-        data.append('Họ Và Tên', formData.get('fullName'));
-        data.append('Số điện thoại liên hệ', formData.get('phone'));
-        data.append('Khu Vực', formData.get('area'));
-        data.append('Bằng lái xe', formData.get('license'));
-        data.append('Đã từng chạy Xanh SM', formData.get('experienced'));
-
-        try {
-            // Dùng mode: 'no-cors' để giải quyết triệt để lỗi chuyển hướng 302 của Google Script
-            await fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: data
-            });
-
-            // Hiển thị modal đăng ký thành công
+    // Lắng nghe sự kiện iframe ẩn tải xong (Google Sheets đã ghi nhận dữ liệu)
+    hiddenIframe.addEventListener('load', () => {
+        if (isSubmitted) {
+            // 1. Hiện Modal đăng ký thành công rực rỡ
             successModal.classList.remove('hidden');
+            
+            // 2. Reset lại form trống
             form.reset();
-        } catch (error) {
-            console.error('Lỗi khi gửi form:', error);
-            showMessage('Không thể gửi thông tin. Vui lòng kiểm tra lại kết nối mạng!', 'error');
-        } finally {
-            // Khôi phục nút submit
+            
+            // 3. Khôi phục lại trạng thái ban đầu của nút bấm
             submitBtn.disabled = false;
             btnText.classList.remove('hidden');
             loader.classList.add('hidden');
+            
+            // Reset trạng thái
+            isSubmitted = false;
         }
     });
 
@@ -64,10 +51,4 @@ document.addEventListener('DOMContentLoaded', () => {
             successModal.classList.add('hidden');
         }
     });
-
-    function showMessage(message, type) {
-        formMessage.textContent = message;
-        formMessage.className = `form-message ${type}`;
-        formMessage.classList.remove('hidden');
-    }
 });

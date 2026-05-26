@@ -8,8 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
 </head>
 <body>
+    <!-- Hidden iframe for CORS-free submission -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     <!-- Mobile Header -->
     <header class="header">
         <div class="header-container">
@@ -85,20 +88,20 @@
                     <p>Nhận cuộc gọi phỏng vấn từ phòng nhân sự ngay</p>
                 </div>
 
-                <form id="driverForm" class="driver-form">
+                <form id="driverForm" class="driver-form" action="https://script.google.com/macros/s/AKfycbyihAZVhdzy6ksopO_Ew0foPzaeoPIFk6VJJMWfdVoDJYFyv8xWBTbGEOB4JPVBGe5CJw/exec" method="POST" target="hidden_iframe">
                     <div class="form-group">
                         <label for="fullName">Họ và Tên *</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="VD: Nguyễn Văn A" required>
+                        <input type="text" id="fullName" name="Họ Và Tên" placeholder="VD: Nguyễn Văn A" required>
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Số điện thoại liên hệ *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required pattern="[0-9]{10}">
+                        <input type="tel" id="phone" name="Số điện thoại liên hệ" placeholder="Nhập số điện thoại" required pattern="[0-9]{10}">
                     </div>
 
                     <div class="form-group">
                         <label for="area">Khu Vực đăng ký *</label>
-                        <select id="area" name="area" required>
+                        <select id="area" name="Khu Vực" required>
                             <option value="" disabled selected>Chọn khu vực của bạn</option>
                             <option value="Hà Nội">Hà Nội</option>
                             <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
@@ -107,7 +110,7 @@
 
                     <div class="form-group">
                         <label for="license">Bằng lái xe hiện có *</label>
-                        <select id="license" name="license" required>
+                        <select id="license" name="Bằng lái xe" required>
                             <option value="" disabled selected>Chọn loại bằng lái</option>
                             <option value="B2">Bằng B2</option>
                             <option value="C">Bằng C</option>
@@ -121,21 +124,21 @@
                         <label class="options-label">Bạn đã từng ứng tuyển/chạy Green SM chưa? *</label>
                         <div class="radio-cards">
                             <label class="radio-card">
-                                <input type="radio" name="experienced" value="Chưa từng" required>
+                                <input type="radio" name="Đã từng chạy Xanh SM" value="Chưa từng" required>
                                 <span class="card-content">
                                     <span class="icon">🆕</span>
                                     <span class="text">Chưa từng</span>
                                 </span>
                             </label>
                             <label class="radio-card">
-                                <input type="radio" name="experienced" value="Đã từng ứng tuyển">
+                                <input type="radio" name="Đã từng chạy Xanh SM" value="Đã từng ứng tuyển">
                                 <span class="card-content">
                                     <span class="icon">📝</span>
                                     <span class="text">Đã từng ứng</span>
                                 </span>
                             </label>
                             <label class="radio-card">
-                                <input type="radio" name="experienced" value="Đã từng chạy">
+                                <input type="radio" name="Đã từng chạy Xanh SM" value="Đã từng chạy">
                                 <span class="card-content">
                                     <span class="icon">🚕</span>
                                     <span class="text">Đã từng chạy</span>
