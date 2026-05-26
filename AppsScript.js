@@ -3,7 +3,7 @@
 
 function doPost(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Tuyển dụng tài xế");
     
     // Lấy thông tin từ request gửi lên
     var name = e.parameter['Họ Và Tên'] || '';
