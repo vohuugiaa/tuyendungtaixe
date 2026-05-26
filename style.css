@@ -51,6 +51,11 @@ body {
 .logo {
     height: 32px;
     width: auto;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover {
+    transform: scale(1.06);
 }
 
 .badge-tag {
@@ -58,9 +63,20 @@ body {
     color: #FFFFFF;
     font-size: 0.75rem;
     font-weight: 700;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 99px;
     letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.badge-tag:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 6px 16px rgba(255, 197, 0, 0.4);
+    text-decoration: none;
 }
 
 /* Mobile Container */
@@ -83,6 +99,13 @@ body {
     position: relative;
     box-shadow: var(--shadow-md);
     margin-bottom: 24px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.luong-cung-box:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-color);
 }
 
 .badge-luong {
@@ -96,6 +119,16 @@ body {
     border-radius: 4px;
     margin-bottom: 14px;
     letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.luong-cung-box:hover .badge-luong {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+}
+
+.luong-cung-box:hover .badge-luong .dot {
+    background-color: var(--primary-dark);
 }
 
 .badge-luong .dot {
@@ -158,6 +191,14 @@ body {
     align-items: center;
     gap: 12px;
     box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.capsule-item:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, #FFFFFF 0%, #E6FFFA 100%);
+    border-color: var(--primary-color);
 }
 
 .capsule-icon {
@@ -168,11 +209,21 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: background-color 0.3s ease;
+}
+
+.capsule-item:hover .capsule-icon {
+    background-color: rgba(0, 206, 209, 0.1);
 }
 
 .capsule-icon svg {
     width: 24px;
     height: 24px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.capsule-item:hover .capsule-icon svg {
+    transform: rotate(15deg) scale(1.2);
 }
 
 .capsule-text {
