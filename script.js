@@ -6,15 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnText = submitBtn.querySelector('.btn-text');
     const loader = submitBtn.querySelector('.loader');
     const formMessage = document.getElementById('formMessage');
+    
+    // Modal elements
+    const successModal = document.getElementById('successModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        // Kiểm tra nếu chưa thay link Apps Script
-        if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-            showMessage('Vui lòng thay thế SCRIPT_URL trong file script.js bằng link Google Apps Script thực tế của bạn!', 'error');
-            return;
-        }
 
         // Thay đổi trạng thái nút submit
         submitBtn.disabled = true;
@@ -26,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
         
         // Chuẩn bị dữ liệu gửi đi (FormData mapping theo tên cột Google Sheet)
-        // Các name của input phải khớp với Apps Script nhận vào (Họ Và Tên, Khu Vực,...)
         const data = new FormData();
         data.append('Họ Và Tên', formData.get('fullName'));
         data.append('Số điện thoại liên hệ', formData.get('phone'));
@@ -35,25 +32,36 @@ document.addEventListener('DOMContentLoaded', () => {
         data.append('Đã từng chạy Xanh SM', formData.get('experienced'));
 
         try {
-            const response = await fetch(SCRIPT_URL, {
+            // Dùng mode: 'no-cors' để giải quyết triệt để lỗi chuyển hướng 302 của Google Script
+            await fetch(SCRIPT_URL, {
                 method: 'POST',
+                mode: 'no-cors',
                 body: data
             });
 
-            if (response.ok) {
-                showMessage('Đăng ký thành công! Chúng tôi sẽ sớm liên hệ với bạn.', 'success');
-                form.reset();
-            } else {
-                throw new Error('Network response was not ok.');
-            }
+            // Hiển thị modal đăng ký thành công
+            successModal.classList.remove('hidden');
+            form.reset();
         } catch (error) {
             console.error('Lỗi khi gửi form:', error);
-            showMessage('Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau!', 'error');
+            showMessage('Không thể gửi thông tin. Vui lòng kiểm tra lại kết nối mạng!', 'error');
         } finally {
             // Khôi phục nút submit
             submitBtn.disabled = false;
             btnText.classList.remove('hidden');
             loader.classList.add('hidden');
+        }
+    });
+
+    // Sự kiện đóng Modal
+    closeModalBtn.addEventListener('click', () => {
+        successModal.classList.add('hidden');
+    });
+
+    // Đóng modal khi click ra ngoài vùng card
+    successModal.addEventListener('click', (e) => {
+        if (e.target === successModal) {
+            successModal.classList.add('hidden');
         }
     });
 
