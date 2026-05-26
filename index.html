@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tuyển Dụng Bác Tài Xanh - Xe Tải Điện EC VAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="header">
+        <div class="header-container">
+            <img src="logo.svg" alt="Xanh SM Logo" class="logo">
+            <span class="badge-tag">Tuyển Dụng EC VAN</span>
+        </div>
+    </header>
+
+    <main class="mobile-layout">
+        <!-- Benefit Section (Recreated from User Image) -->
+        <section class="benefits-card-container">
+            <div class="luong-cung-box">
+                <div class="badge-luong">
+                    <span class="dot"></span> LƯƠNG CỨNG
+                </div>
+                <div class="salary-value">5.310.000 VNĐ/Tháng</div>
+                <ul class="salary-details">
+                    <li><span class="plus">+</span> Chia sẻ hoa hồng</li>
+                    <li><span class="plus">+</span> Phí bốc/dỡ hàng hóa lên tới 70.000 VNĐ/Đơn</li>
+                    <li><span class="plus">+</span> Thưởng tháng lên tới 2.000.000 VNĐ</li>
+                </ul>
+            </div>
+
+            <div class="quyen-loi-title">QUYỀN LỢI TÀI XẾ</div>
+
+            <div class="capsules-list">
+                <!-- Capsule 1 -->
+                <div class="capsule-item">
+                    <div class="capsule-icon star-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#00CED1"/>
+                        </svg>
+                    </div>
+                    <div class="capsule-text">
+                        <strong>Ký hợp đồng lao động</strong>
+                        <span>Đóng bảo hiểm đầy đủ: BHXH + BHYT + BHTN</span>
+                    </div>
+                </div>
+
+                <!-- Capsule 2 -->
+                <div class="capsule-item">
+                    <div class="capsule-icon brief-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6H16V4C16 2.89 15.11 2 14 2H10C8.89 2 8 2.89 8 4V6H4C2.89 6 2 6.89 2 8V19C2 20.11 2.89 21 4 21H20C21.11 21 22 20.11 22 19V8C22 6.89 21.11 6 20 6ZM10 4H14V6H10V4ZM20 19H4V8H20V19Z" fill="#00CED1"/>
+                        </svg>
+                    </div>
+                    <div class="capsule-text">
+                        <strong>Vận doanh xe điện tải điện EC VAN MIỄN PHÍ</strong>
+                        <span>Chi phí vận hành chỉ bằng 1/3 xe xăng</span>
+                    </div>
+                </div>
+
+                <!-- Capsule 3 -->
+                <div class="capsule-item">
+                    <div class="capsule-icon bolt-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 2V13H10V22L17 10H13L16 2H7Z" fill="#00CED1"/>
+                        </svg>
+                    </div>
+                    <div class="capsule-text">
+                        <strong>Chính sách sạc hợp lý</strong>
+                        <span>Chi phí sạc cực rẻ, tối ưu hóa doanh thu và số đơn hàng</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simplified Form Section -->
+        <section class="form-section">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>ĐĂNG KÝ ỨNG TUYỂN</h2>
+                    <p>Nhận cuộc gọi phỏng vấn từ phòng nhân sự ngay</p>
+                </div>
+
+                <form id="driverForm" class="driver-form">
+                    <div class="form-group">
+                        <label for="fullName">Họ và Tên *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="VD: Nguyễn Văn A" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại liên hệ *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required pattern="[0-9]{10}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="area">Khu Vực đăng ký *</label>
+                        <select id="area" name="area" required>
+                            <option value="" disabled selected>Chọn khu vực của bạn</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Hải Phòng">Hải Phòng</option>
+                            <option value="Cần Thơ">Cần Thơ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="license">Bằng lái xe hiện có *</label>
+                        <select id="license" name="license" required>
+                            <option value="" disabled selected>Chọn loại bằng lái</option>
+                            <option value="B2">Bằng B2</option>
+                            <option value="C">Bằng C</option>
+                            <option value="D">Bằng D</option>
+                            <option value="E">Bằng E</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="options-label">Bạn đã từng ứng tuyển/chạy Xanh SM chưa? *</label>
+                        <div class="radio-cards">
+                            <label class="radio-card">
+                                <input type="radio" name="experienced" value="Chưa từng" required>
+                                <span class="card-content">
+                                    <span class="icon">🆕</span>
+                                    <span class="text">Chưa từng</span>
+                                </span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="experienced" value="Đã từng ứng tuyển">
+                                <span class="card-content">
+                                    <span class="icon">📝</span>
+                                    <span class="text">Đã từng ứng</span>
+                                </span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="experienced" value="Đã từng chạy">
+                                <span class="card-content">
+                                    <span class="icon">🚕</span>
+                                    <span class="text">Đã từng chạy</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-submit">
+                        <span class="btn-text">GỬI ĐĂNG KÝ NGAY</span>
+                        <span class="loader hidden"></span>
+                    </button>
+                    
+                    <div id="formMessage" class="form-message hidden"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mobile-footer">
+        <p>© 2026 Xanh SM. Tuyển dụng tài xế xe tải điện EC VAN.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
