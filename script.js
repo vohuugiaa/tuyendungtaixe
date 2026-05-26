@@ -1,5 +1,4 @@
-// NOTE: Thay thế biến SCRIPT_URL bằng link Google Apps Script của bạn
-const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; 
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyihAZVhdzy6ksopO_Ew0foPzaeoPIFk6VJJMWfdVoDJYFyv8xWBTbGEOB4JPVBGe5CJw/exec'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('driverForm');
